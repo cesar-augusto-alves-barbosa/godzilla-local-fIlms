@@ -23,12 +23,8 @@ public class UsuarioController {
     @Autowired
     public FilmesRepository filmeRepository;
 
-    @GetMapping("/{token}")
-    public ResponseEntity getUsuarios(@PathVariable String token) {
-        Usuario usuario = repository.findUsuarioByToken(token);
-        if (usuario == null) {
-            return ResponseEntity.status(403).build();
-        }
+    @GetMapping()
+    public ResponseEntity getUsuarios() {
         List<Usuario> usuarios = repository.findAll();
         if (usuarios.isEmpty()) {
             return ResponseEntity.status(204).build();

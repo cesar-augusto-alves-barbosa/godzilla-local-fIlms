@@ -16,6 +16,10 @@ public class Usuario {
     private Integer id;
 
     @NotNull
+    @Size(min = 2, max = 50)
+    private String nome;
+
+    @NotNull
     @Email
     private String email;
 
@@ -26,6 +30,14 @@ public class Usuario {
     @ManyToOne
     @JoinColumn(name = "filme_alugado_id")
     private Filme filmeAlugado;
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
     public void setFilmeAlugado(Filme filmeAlugado) {
         this.filmeAlugado = filmeAlugado;
