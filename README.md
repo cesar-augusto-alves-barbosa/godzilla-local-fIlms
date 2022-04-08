@@ -97,12 +97,13 @@ API para uma empresa de locadora
 
 
 ```sh
+{
   "id": 3,
   "nome": "Almofadinhas",
   "email": "cliente@cliente.com",
   "filmeAlugado": null,
   "token": "403da746-056a-474d-b2a2-106b79e7acc4"
 }
-]
+
 ```
 
