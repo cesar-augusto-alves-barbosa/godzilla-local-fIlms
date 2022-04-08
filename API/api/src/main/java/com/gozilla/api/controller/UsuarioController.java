@@ -1,5 +1,6 @@
 package com.gozilla.api.controller;
 
+import com.gozilla.api.Adapter.LoginUsuario;
 import com.gozilla.api.model.Filme;
 import com.gozilla.api.model.Usuario;
 import com.gozilla.api.repository.FilmesRepository;
@@ -40,6 +41,37 @@ public class UsuarioController {
         repository.save(usuario);
 
         return ResponseEntity.status(201).body(usuario);
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity loginUsuario(@RequestBody @Valid LoginUsuario loginUsuario) {
+        Usuario usuario = repository.findUsuarioByEmail(loginUsuario.getEmail());
+        String senhaUsuario = usuario.getSenha();
+        if(usuario == null) {
+            return ResponseEntity.status(404).build();
+        }
+        if(senhaUsuario == loginUsuario.getSenha()) {
+            return ResponseEntity.status(406).build();
+        }
+        if(usuario.getToken() != null) {
+            return ResponseEntity.status(202).build();
+        }
+        UUID uuid = UUID.randomUUID();
+        String token = uuid.toString();
+        usuario.setToken(token);
+        repository.save(usuario);
+        return ResponseEntity.status(200).build();
+    }
+
+    @DeleteMapping("/delete/{token}")
+    public ResponseEntity deletarToken(@PathVariable String token) {
+        Usuario usuario = repository.findUsuarioByToken(token);
+        if(usuario == null) {
+            return ResponseEntity.status(404).body(usuario);
+        }
+        usuario.setToken(null);
+        repository.save(usuario);
+        return ResponseEntity.status(200).build();
     }
 
     @DeleteMapping("/devolver/{token}")

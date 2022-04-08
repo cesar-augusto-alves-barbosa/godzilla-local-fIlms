@@ -42,7 +42,6 @@ public class FilmeController {
         if(usuario != null) {
             if(usuario.getFilmeAlugado() == null) {
                 Optional<Filme> filmeOptional = repository.findById(id);
-
                 if(filmeOptional.isPresent()) {
                     Filme filme = filmeOptional.get();
                     if(filme.getEstoque() == 0) {
@@ -54,10 +53,8 @@ public class FilmeController {
                     userRepository.save(usuario);
                     return ResponseEntity.status(200).build();
                 }
-                return ResponseEntity.status(204).build();
-
+                return ResponseEntity.status(404).build();
             }
-
         }
         return ResponseEntity.status(401).build();
     }
