@@ -16,17 +16,17 @@ API para uma empresa de locadora
 </p>
   
 ```sh
-  {
-	  "email": "cliente@cliente.com",
-	  "senha": "1234567@"
-  }
+ {
+   "email": "cliente@cliente.com",
+   "senha": "1234567@"
+ }
 ```
 <p align="justify"> 
   e como resultado a seguinte resposta será recebida
 </p> 
 
 ```sh
-  {
+ {
   "id": 1,
   "email": "cliente@cliente.com",
   "filmeAlugado": null,
@@ -62,6 +62,7 @@ API para uma empresa de locadora
 ]
 ```
 <br>
+
 # Alugar um filme
 
 <p align="justify"> 
