@@ -1,22 +1,22 @@
 # API Godzilla
 API para uma empresa de locadora
-
+<br>
 
 # Descrição
 <p align="justify"> 
-  Esse projeto apresenta o desenvolvimento de uma API para uma empresa de locadora de filmes chamada <b>Godzilla</b>
+  Esse projeto apresenta o desenvolvimento de uma API para uma empresa de locadora de filmes chamada __Godzilla__
   utilizando Spring Boot
 </p>
-<br>
 
-# Como utilizar
+## Como utilizar
 <p align="justify"> 
   Para ter acesso aos Filmes é preciso criar um usuário. 
-  atravez do EndPoint http://localhost:8080/usuarios/usuario vocÊ pode se cadastrar passando o seguinte conteudo no corpo da requisição
+  atravez do EndPoint(POST) http://localhost:8080/usuarios/usuario vocÊ pode se cadastrar passando o seguinte conteudo no corpo da requisição
 </p>
   
 ```sh
  {
+   "name": "Cesar Augusto",
    "email": "cliente@cliente.com",
    "senha": "1234567@"
  }
@@ -28,20 +28,21 @@ API para uma empresa de locadora
 ```sh
  {
   "id": 1,
+  "name": "Cesar Augusto",
   "email": "cliente@cliente.com",
   "filmeAlugado": null,
   "token": "04901d6e-33f1-4e07-ae38-aff4e30c24e6"
 }
 ```
 <p align="justify" style="color: yellow" > 
-  Nota: O token recebido na resposta deve ser utilizado em todos os EndPoints da API. Ele é unico para cada usuário.
+  **_Nota: O token recebido na resposta deve ser utilizado em todos os EndPoints da API. Ele é unico para cada usuário._**
 </p> 
 <br>
 
-# Visualizar Catalogo
+## Visualizar Catalogo
 
 <p align="justify"> 
-  É possivel visualizar o catálogo de filmes atravez do EndPoint  http://localhost:8080/filmes/{token}, onde {token} é o seu token pessoal.
+  É possivel visualizar o catálogo de filmes atravez do EndPoint(GET)  http://localhost:8080/filmes/{token}, onde {token} é o seu token pessoal.
   e como resultado obtemos uma lista de filmes como esssa:
 </p>
 
@@ -63,22 +64,22 @@ API para uma empresa de locadora
 ```
 <br>
 
-# Alugar um filme
+## Alugar um filme
 
 <p align="justify"> 
-  Agora você já possui o que é preciso para alugar um filme. Para aluga-lo basta acessar o EndPoint http://localhost:8080/godzilla/{idFilme}/{token}, 
+  Agora você já possui o que é preciso para alugar um filme. Para aluga-lo basta acessar o EndPoint(POST) http://localhost:8080/godzilla/{idFilme}/{token}, 
   onde {idFilme} é o id do filme que deseja ser alugado e {token} é o seu token pessoal.
 </p> 
 
 <p align="justify" style="color: yellow" > 
-  Nota: só é permitido alugar um filme por usúario.
+  **_Nota: só é permitido alugar um filme por usúario._**
 </p> 
 <br>
 
-# Devolver um filme
+## Devolver um filme
 
 <p align="justify"> 
-  Para devolver um filme você deve acessar o EndPoint http://localhost:8080/usuarios/devolver/{token}, onde {token} é o seu token pessoal.
+  Para devolver um filme você deve acessar o EndPoint(DELETE) http://localhost:8080/usuarios/devolver/{token}, onde {token} é o seu token pessoal.
 </p>
 
 
