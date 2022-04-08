@@ -60,7 +60,7 @@ public class UsuarioController {
         String token = uuid.toString();
         usuario.setToken(token);
         repository.save(usuario);
-        return ResponseEntity.status(200).build();
+        return ResponseEntity.status(200).body(usuario);
     }
 
     @DeleteMapping("/delete/{token}")
