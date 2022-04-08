@@ -36,7 +36,7 @@ public class FilmeController {
         return ResponseEntity.status(200).body(filmes);
     }
 
-    @PutMapping("/godzilla/{id}/{token}")
+    @PostMapping("/godzilla/{id}/{token}")
     public ResponseEntity alugarFilme(@PathVariable Integer id, @PathVariable String token) {
         Usuario usuario = userRepository.findUsuarioByToken(token);
         if(usuario != null) {
