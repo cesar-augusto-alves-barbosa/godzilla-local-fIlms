@@ -4,7 +4,7 @@ API para uma empresa de locadora
 
 # Descrição
 <p align="justify"> 
-  Esse projeto apresenta o desenvolvimento de uma API para uma empresa de locadora de filmes chamada __Godzilla__
+  Esse projeto apresenta o desenvolvimento de uma API para uma empresa de locadora de filmes chamada Godzilla
   utilizando Spring Boot
 </p>
 
@@ -35,7 +35,7 @@ API para uma empresa de locadora
 }
 ```
 <p align="justify" style="color: yellow" > 
-  **_Nota: O token recebido na resposta deve ser utilizado em todos os EndPoints da API. Ele é unico para cada usuário._**
+    Nota: O token recebido na resposta deve ser utilizado em todos os EndPoints da API. Ele é unico para cada usuário.
 </p> 
 <br>
 
@@ -72,7 +72,7 @@ API para uma empresa de locadora
 </p> 
 
 <p align="justify" style="color: yellow" > 
-  **_Nota: só é permitido alugar um filme por usúario._**
+  Nota: só é permitido alugar um filme por usúario.
 </p> 
 <br>
 
