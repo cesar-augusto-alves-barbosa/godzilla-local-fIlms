@@ -82,6 +82,27 @@ API para uma empresa de locadora
   Para devolver um filme você deve acessar o EndPoint(DELETE) http://localhost:8080/usuarios/devolver/{token}, onde {token} é o seu token pessoal.
 </p>
 
+## Deletar toke
+
+<p align="justify"> 
+  É possivel deletar um token atravez do EndPoint(DELETE) http://localhost:8080/usuarios/delete/, onde {token} é o seu token pessoal.
+  Dai o usuário não podera ter acesso a aplicação sem um token, precisando fazer um login novamente para acessar
+</p>
+
+## Login
+
+<p align="justify"> 
+  Para fazer o login é preciso acessar o EndPoint(POST) http://localhost:8080/usuarios/login, que retornara um novo token para a autenticação:
+</p>
 
 
+```sh
+  "id": 3,
+  "nome": "Almofadinhas",
+  "email": "cliente@cliente.com",
+  "filmeAlugado": null,
+  "token": "403da746-056a-474d-b2a2-106b79e7acc4"
+}
+]
+```
 
