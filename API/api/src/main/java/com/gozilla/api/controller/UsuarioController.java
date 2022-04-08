@@ -23,8 +23,12 @@ public class UsuarioController {
     @Autowired
     public FilmesRepository filmeRepository;
 
-    @GetMapping()
-    public ResponseEntity getUsuarios() {
+    @GetMapping("/{token}")
+    public ResponseEntity getUsuarios(@PathVariable String token) {
+        Usuario usuario = repository.findUsuarioByToken(token);
+        if (usuario == null) {
+            return ResponseEntity.status(403).build();
+        }
         List<Usuario> usuarios = repository.findAll();
         if (usuarios.isEmpty()) {
             return ResponseEntity.status(204).build();
@@ -36,7 +40,6 @@ public class UsuarioController {
     public ResponseEntity postUsuario(@RequestBody @Valid Usuario usuario) {
         UUID uuid = UUID.randomUUID();
         String token = uuid.toString();
-
         usuario.setToken(token);
         repository.save(usuario);
 
@@ -46,6 +49,9 @@ public class UsuarioController {
     @DeleteMapping("/devolver/{token}")
     public ResponseEntity devolverFilme(@PathVariable String token) {
         Usuario usuario = repository.findUsuarioByToken(token);
+        if (usuario == null) {
+            return ResponseEntity.status(403).build();
+        }
         if (usuario.getFilmeAlugado() == null) {
             return ResponseEntity.status(202).build();
         }
@@ -56,6 +62,6 @@ public class UsuarioController {
         usuario.setFilmeAlugado(null);
         repository.save(usuario);
 
-        return ResponseEntity.status(200).body(usuario);
+        return ResponseEntity.status(200).build();
     }
 }

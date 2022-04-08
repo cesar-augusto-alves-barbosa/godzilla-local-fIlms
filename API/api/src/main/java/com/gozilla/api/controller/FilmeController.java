@@ -23,8 +23,12 @@ public class FilmeController {
     @Autowired
     public UsuarioRepository userRepository;
 
-    @GetMapping("/filmes")
-    public ResponseEntity getFilmes() {
+    @GetMapping("/filmes/{token}")
+    public ResponseEntity getFilmes(@PathVariable String token) {
+        Usuario usuario = userRepository.findUsuarioByToken(token);
+        if (usuario == null) {
+            return ResponseEntity.status(403).build();
+        }
         List<Filme> filmes = repository.findAll();
         if (filmes.isEmpty()) {
             return ResponseEntity.status(204).build();
@@ -48,7 +52,7 @@ public class FilmeController {
                     usuario.setFilmeAlugado(filme);
                     repository.save(filme);
                     userRepository.save(usuario);
-                    return ResponseEntity.status(200).body(filme);
+                    return ResponseEntity.status(200).build();
                 }
                 return ResponseEntity.status(204).build();
 
