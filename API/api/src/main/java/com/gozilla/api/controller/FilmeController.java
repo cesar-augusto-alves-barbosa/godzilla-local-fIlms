@@ -25,8 +25,8 @@ public class FilmeController {
 
     @GetMapping("/filmes/{token}")
     public ResponseEntity getFilmes(@PathVariable String token) {
-        Usuario usuario = userRepository.findUsuarioByToken(token);
-        if (usuario == null) {
+        Optional<Usuario> usuarioOptional = userRepository.findUsuarioByToken(token);
+        if (!usuarioOptional.isPresent()) {
             return ResponseEntity.status(403).build();
         }
         List<Filme> filmes = repository.findAll();
@@ -38,8 +38,9 @@ public class FilmeController {
 
     @PostMapping("/godzilla/{id}/{token}")
     public ResponseEntity alugarFilme(@PathVariable Integer id, @PathVariable String token) {
-        Usuario usuario = userRepository.findUsuarioByToken(token);
-        if(usuario != null) {
+        Optional<Usuario> usuarioOptional = userRepository.findUsuarioByToken(token);
+        if(usuarioOptional.isPresent()) {
+            Usuario usuario = usuarioOptional.get();
             if(usuario.getFilmeAlugado() == null) {
                 Optional<Filme> filmeOptional = repository.findById(id);
                 if(filmeOptional.isPresent()) {
@@ -66,5 +67,25 @@ public class FilmeController {
             return ResponseEntity.status(204).build();
         }
         return ResponseEntity.status(200).body(filmes);
+    }
+
+    @DeleteMapping("/devolver/{token}")
+    public ResponseEntity devolverFilme(@PathVariable String token) {
+        Optional<Usuario> usuarioOptional = userRepository.findUsuarioByToken(token);
+        if(usuarioOptional.isPresent()) {
+            Usuario usuario = usuarioOptional.get();
+            if (usuario.getFilmeAlugado() == null) {
+                return ResponseEntity.status(202).build();
+            }
+            Integer estoqueFilme = usuario.getFilmeAlugado().getEstoque();
+            Filme filme = usuario.getFilmeAlugado();
+            filme.setEstoque(estoqueFilme+1);
+            repository.save(filme);
+            usuario.setFilmeAlugado(null);
+            userRepository.save(usuario);
+
+            return ResponseEntity.status(200).build();
+        }
+        return ResponseEntity.status(404).build();
     }
 }

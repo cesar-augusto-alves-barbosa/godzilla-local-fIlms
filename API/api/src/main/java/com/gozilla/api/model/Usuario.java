@@ -1,10 +1,8 @@
 package com.gozilla.api.model;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -21,9 +19,10 @@ public class Usuario {
 
     @NotNull
     @Email
+    @Column(unique=true)
     private String email;
 
-    @Size(min = 8, max = 50)
+    @Size(min = 8)
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String senha;
 
