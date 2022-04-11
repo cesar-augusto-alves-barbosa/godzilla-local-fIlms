@@ -80,13 +80,14 @@ API para uma empresa de locadora
 
 <p align="justify"> 
   Para devolver um filme você deve acessar o EndPoint(DELETE) http://localhost:8080/filmes/devolver/{token}, onde {token} é o seu token pessoal.
+  Como resultado, o usuário devolve o último filme que ele alugou.
 </p>
 
-## Deletar token
+## Expirar token
 
 <p align="justify"> 
-  É possivel deletar um token atravez do EndPoint(DELETE) http://localhost:8080/usuarios/expirar/, onde {token} é o seu token pessoal.
-  Dai o usuário não podera ter acesso a aplicação sem um token, precisando fazer um login novamente para acessar
+  É possivel expirar um token atravez do EndPoint(DELETE) http://localhost:8080/usuarios/expirar/, onde {token} é o seu token pessoal.
+  Dai o usuário não podera ter acesso a aplicação sem um token, precisando fazer um login novamente para acessar.
 </p>
 
 ## Login
