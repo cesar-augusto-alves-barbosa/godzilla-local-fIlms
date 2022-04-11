@@ -67,7 +67,7 @@ API para uma empresa de locadora
 ## Alugar um filme
 
 <p align="justify"> 
-  Agora você já possui o que é preciso para alugar um filme. Para aluga-lo basta acessar o EndPoint(POST) http://localhost:8080/godzilla/{idFilme}/{token}, 
+  Agora você já possui o que é preciso para alugar um filme. Para aluga-lo basta acessar o EndPoint(POST) http://localhost:8080/filmes/godzilla/{idFilme}/{token}, 
   onde {idFilme} é o id do filme que deseja ser alugado e {token} é o seu token pessoal.
 </p> 
 
@@ -79,13 +79,13 @@ API para uma empresa de locadora
 ## Devolver um filme
 
 <p align="justify"> 
-  Para devolver um filme você deve acessar o EndPoint(DELETE) http://localhost:8080/usuarios/devolver/{token}, onde {token} é o seu token pessoal.
+  Para devolver um filme você deve acessar o EndPoint(DELETE) http://localhost:8080/filmes/devolver/{token}, onde {token} é o seu token pessoal.
 </p>
 
-## Deletar toke
+## Deletar token
 
 <p align="justify"> 
-  É possivel deletar um token atravez do EndPoint(DELETE) http://localhost:8080/usuarios/delete/, onde {token} é o seu token pessoal.
+  É possivel deletar um token atravez do EndPoint(DELETE) http://localhost:8080/usuarios/expirar/, onde {token} é o seu token pessoal.
   Dai o usuário não podera ter acesso a aplicação sem um token, precisando fazer um login novamente para acessar
 </p>
 
