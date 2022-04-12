@@ -45,7 +45,7 @@ public class UsuarioController {
     @PostMapping("/usuario")
     public ResponseEntity postUsuario(@RequestBody @Valid Usuario usuario) {
         Optional<Usuario> usuarioOptional = repository.findUsuarioByEmail(usuario.getEmail());
-        if (usuarioOptional.isPresent()) {
+        if (!usuarioOptional.isPresent()) {
             return ResponseEntity.status(400).build();
         }
         UUID uuid = UUID.randomUUID();

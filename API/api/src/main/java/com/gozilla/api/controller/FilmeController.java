@@ -15,6 +15,7 @@ import java.util.Optional;
 
 @RestController
 @CrossOrigin
+@RequestMapping("/filmes")
 public class FilmeController {
 
     @Autowired
@@ -23,7 +24,7 @@ public class FilmeController {
     @Autowired
     public UsuarioRepository userRepository;
 
-    @GetMapping("/filmes/{token}")
+    @GetMapping("/{token}")
     public ResponseEntity getFilmes(@PathVariable String token) {
         Optional<Usuario> usuarioOptional = userRepository.findUsuarioByToken(token);
         if (!usuarioOptional.isPresent()) {
