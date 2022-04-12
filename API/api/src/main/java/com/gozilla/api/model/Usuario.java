@@ -26,26 +26,12 @@ public class Usuario {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String senha;
 
-    @ManyToOne
-    @JoinColumn(name = "filme_alugado_id")
-    private Filme filmeAlugado;
-
     public String getNome() {
         return nome;
     }
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public void setFilmeAlugado(Filme filmeAlugado) {
-        this.filmeAlugado = filmeAlugado;
-    }
-
-    private String token = "";
-
-    public Filme getFilmeAlugado() {
-        return filmeAlugado;
     }
 
     public Integer getId() {
@@ -70,13 +56,5 @@ public class Usuario {
 
     public void setSenha(String senha) {
         this.senha = senha;
-    }
-
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
     }
 }
