@@ -29,13 +29,13 @@ public class UsuarioController {
         this.encoder = encoder;
     }
 
-    @GetMapping()
-    public ResponseEntity getUsuarios() {
-        List<Usuario> usuarios = repository.findAll();
-        if (usuarios.isEmpty()) {
-            return ResponseEntity.status(204).build();
+    @GetMapping("/{id}")
+    public ResponseEntity getUsuarioById(@PathVariable Integer id) {
+        Optional<Usuario> usuarioOptional = repository.findById(id);
+        if (!usuarioOptional.isPresent()) {
+            return ResponseEntity.status(404).build();
         }
-        return ResponseEntity.status(200).body(usuarios);
+        return ResponseEntity.status(200).body(usuarioOptional.get());
     }
 
     @PostMapping("/cadastrar")

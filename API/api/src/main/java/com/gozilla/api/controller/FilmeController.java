@@ -32,10 +32,13 @@ public class FilmeController {
     }
 
     @GetMapping("/locadora/{titulo}")
-    public ResponseEntity alugaFilme(@PathVariable String titulo) {
+    public ResponseEntity getFilmeByTitulo(@PathVariable String titulo) {
+        if (titulo == null || titulo == "") {
+            return ResponseEntity.status(406).build();
+        }
         List<Filme> filmes = repository.findByAnyTitulo(titulo.toLowerCase());
         if (filmes.isEmpty()) {
-            return ResponseEntity.status(204).build();
+            return ResponseEntity.status(404).build();
         }
         return ResponseEntity.status(200).body(filmes);
     }
