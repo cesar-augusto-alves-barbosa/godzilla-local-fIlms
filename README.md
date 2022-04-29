@@ -1,6 +1,6 @@
 # API Godzilla
+![](/Logos/logo_godzilla.png)
 <br>
-
 # Descrição
 <p align="justify"> 
   Esse projeto apresenta o desenvolvimento de uma API para uma empresa de locadora de filmes chamada Godzilla
